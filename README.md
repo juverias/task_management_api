@@ -1,19 +1,7 @@
 # Task Management API (Mini Jira Backend)
 
-A Spring Boot based Task Management REST API inspired by Jira.
-This system allows managing boards, sprints, issues, workflows, attachments, and reporting with secure JWT authentication.
-
----
-
-## Tech Stack
-
-* Java 21
-* Spring Boot
-* Spring Security (JWT)
-* Hibernate / JPA
-* MySQL
-* Maven
-* Swagger (OpenAPI)
+A **Spring Boot based Task Management REST API** inspired by Jira.
+This backend system supports managing boards, sprints, issues, workflows, attachments, and reporting with **JWT authentication**.
 
 ---
 
@@ -31,13 +19,49 @@ This system allows managing boards, sprints, issues, workflows, attachments, and
 
 ---
 
+## Tech Stack
+
+Backend
+
+* Java 21
+* Spring Boot
+* Spring Security
+* JWT Authentication
+* Hibernate / JPA
+
+Database
+
+* MySQL
+
+Documentation
+
+* Swagger (OpenAPI)
+
+Build Tool
+
+* Maven
+
+API Testing
+
+* Postman
+
+---
+
 ## API Documentation
 
-Swagger UI:
+Swagger UI
 
-```
 http://localhost:8080/swagger-ui/index.html
-```
+
+---
+
+## Postman Collection
+
+The Postman collection for testing all APIs is available in the repository.
+
+Import this file into Postman:
+
+postman/task-management-api-postman-collection.json
 
 ---
 
@@ -46,33 +70,33 @@ http://localhost:8080/swagger-ui/index.html
 ```
 com.task
 │
-├── Config
-├── Controller
-├── DTO
-├── Entity
-├── ENUM
-├── Exception
-├── Repository
-├── Security
-├── Service
-└── Storage
+├── Config          # Configuration classes
+├── Controller      # REST Controllers
+├── DTO             # Data Transfer Objects
+├── Entity          # Database Entities
+├── ENUM            # Enums used in the system
+├── Exception       # Global Exception Handling
+├── Repository      # JPA Repositories
+├── Security        # JWT Authentication & Filters
+├── Service         # Business Logic
+├── Storage         # File Upload Handling
 ```
 
 ---
 
 ## Running the Project
 
-Clone repository:
+Clone the repository
 
-```
 git clone https://github.com/juverias/task_management_api.git
-```
 
-Run the application:
+Navigate to the project folder
 
-```
+cd task_management_api
+
+Run the application
+
 mvn spring-boot:run
-```
 
 ---
 
