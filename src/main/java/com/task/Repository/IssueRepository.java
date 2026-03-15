@@ -1,0 +1,21 @@
+package com.task.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.task.ENUM.IssueStatus;
+import com.task.Entity.Issue;
+
+@Repository
+public interface IssueRepository extends JpaRepository<Issue,Long> {
+
+	Optional<Issue>findByIssueKey(String issueKey);
+	List<Issue>findByAssignedEmail(String assignedEmail);
+	List<Issue>findBySprintId(Long sprintId);
+	List<Issue>findByIssueStatus(IssueStatus issueStatus);
+	List<Issue>findByProjectIdAndSprintIdIsNullOrderByBackLogPosition(Long projectId);
+	List<Issue> findByEpicId(Long epicId); 
+}
