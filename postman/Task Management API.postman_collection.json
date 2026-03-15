@@ -1,0 +1,1732 @@
+{
+  "info": {
+    "_postman_id": "7d71aa49-7135-4bd3-9d7e-1246720174a1",
+    "name": "Task Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42136831"
+  },
+  "item": [
+    {
+      "name": "User Auth Controller",
+      "item": [
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let response = pm.response.json();\r",
+                  "pm.environment.set(\"token\", response.token);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userOfficialEmail\": \"juveria@gmail.com\",\r\n  \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/Authentication/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "Authentication",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "JWT Test",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/Authentication/test",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "Authentication",
+                "test"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userOfficialEmail\": \"juveria@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/Authentication/forgot_password",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "Authentication",
+                "forgot_password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"token\": \"0e03a0da-26e8-419d-936c-630835e507d5\",\r\n  \"newPassword\": \"654321\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/Authentication/reset_password",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "Authentication",
+                "reset_password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJDT01NRU5UX0FERCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNDcxMTMyLCJleHAiOjE3NzM1NTc1MzJ9.1AhA7bPcKw2sonWh8wg9Qd5VwZ4g6E4I7cK3eV_N60M",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/Authentication/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "Authentication",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userName\": \"Juveria\",\r\n  \"userOfficialEmail\": \"juveria@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"DEVELOPER\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/Authentication/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "Authentication",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User Profile Update Controller",
+      "item": [
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJDT01NRU5UX0FERCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNDc2MDk2LCJleHAiOjE3NzM1NjI0OTZ9.C8fnMhiRjU1Yy2u4bE6DyplR8trgTfJffY7GueSVfik",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userName\": \"Juveria Shaikh\",\r\n  \"organizationNmae\": \"Amdocs\",\r\n  \"department\": \"Engineering\",\r\n  \"designation\": \"Backend Developer\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/profile_update/updateProfile/juveria@gmail.com",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "profile_update",
+                "updateProfile",
+                "juveria@gmail.com"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All User Profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJDT01NRU5UX0FERCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNDc2MDk2LCJleHAiOjE3NzM1NjI0OTZ9.C8fnMhiRjU1Yy2u4bE6DyplR8trgTfJffY7GueSVfik",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/profile_update/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "profile_update",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update New Role",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJDT01NRU5UX0FERCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNDc2MDk2LCJleHAiOjE3NzM1NjI0OTZ9.C8fnMhiRjU1Yy2u4bE6DyplR8trgTfJffY7GueSVfik",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/profile_update/updateNewRole?userOfficialEmail=juveria@gmail.com&role=ADMIN",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "profile_update",
+                "updateNewRole"
+              ],
+              "query": [
+                {
+                  "key": "userOfficialEmail",
+                  "value": "juveria@gmail.com"
+                },
+                {
+                  "key": "role",
+                  "value": "ADMIN"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Official Email",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJDT01NRU5UX0FERCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNDc2MDk2LCJleHAiOjE3NzM1NjI0OTZ9.C8fnMhiRjU1Yy2u4bE6DyplR8trgTfJffY7GueSVfik",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/profile_update/juveria@gmail.com",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "profile_update",
+                "juveria@gmail.com"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Board Controller",
+      "item": [
+        {
+          "name": "Get Board By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJDT01NRU5UX0FERCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNDc2MDk2LCJleHAiOjE3NzM1NjI0OTZ9.C8fnMhiRjU1Yy2u4bE6DyplR8trgTfJffY7GueSVfik",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/boards/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "boards",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Board",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJDT01NRU5UX0FERCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNDc2MDk2LCJleHAiOjE3NzM1NjI0OTZ9.C8fnMhiRjU1Yy2u4bE6DyplR8trgTfJffY7GueSVfik",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"boardName\": \"Development Board\",\r\n  \"boardDescription\": \"Main Project Board\",\r\n  \"projectKey\": \"DEV\",\r\n  \"boardType\": \"SCRUM\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/boards/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "boards",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Board Columns",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJDT01NRU5UX0FERCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNDgzNTI2LCJleHAiOjE3NzM1Njk5MjZ9.S9d3LoXNzS0Y-QuNlsNnk-zYMZuSx2vrIVWLTD09QyQ",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/boards/1/column",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "boards",
+                "1",
+                "column"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Column",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJDT01NRU5UX0FERCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNDgzNTI2LCJleHAiOjE3NzM1Njk5MjZ9.S9d3LoXNzS0Y-QuNlsNnk-zYMZuSx2vrIVWLTD09QyQ",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"To Do\",\r\n  \"statusKey\": \"OPEN\",\r\n  \"position\": 1,\r\n  \"wiplimit\": 5\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/boards/1/column",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "boards",
+                "1",
+                "column"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNDg3NjY3LCJleHAiOjE3NzM1NzQwNjd9.DUpVEUIAwduBNu5SRwwgJXUgctA4TQq4a8BPjWuY3Iw",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/boards/1/columns/1/issues/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "boards",
+                "1",
+                "columns",
+                "1",
+                "issues",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Move Card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNDg3NjY3LCJleHAiOjE3NzM1NzQwNjd9.DUpVEUIAwduBNu5SRwwgJXUgctA4TQq4a8BPjWuY3Iw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/boards/1/columns/1/cards/1/move/1/Juveria",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "boards",
+                "1",
+                "columns",
+                "1",
+                "cards",
+                "1",
+                "move",
+                "1",
+                "Juveria"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Column Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNDg3NjY3LCJleHAiOjE3NzM1NzQwNjd9.DUpVEUIAwduBNu5SRwwgJXUgctA4TQq4a8BPjWuY3Iw",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[1]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/boards/1/columns/1/record",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "boards",
+                "1",
+                "columns",
+                "1",
+                "record"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Start Sprint API",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNDg3NjY3LCJleHAiOjE3NzM1NzQwNjd9.DUpVEUIAwduBNu5SRwwgJXUgctA4TQq4a8BPjWuY3Iw",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/boards/sprints/1/start",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "boards",
+                "sprints",
+                "1",
+                "start"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Complete Sprint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNDg3NjY3LCJleHAiOjE3NzM1NzQwNjd9.DUpVEUIAwduBNu5SRwwgJXUgctA4TQq4a8BPjWuY3Iw",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/boards/sprints/1/complete",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "boards",
+                "sprints",
+                "1",
+                "complete"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "BackLog Controller",
+      "item": [
+        {
+          "name": "Get Backlog API",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIkNPTU1FTlRfQUREIiwiSVNTVUVfRURJVCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNTA0NDk2LCJleHAiOjE3NzM1OTA4OTZ9.HsMkzoYa0TBWG8YZJ794pt4S_nkYt88w58GbvYF3nTw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/back_log/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "back_log",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Record Backlog Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNDk2OTU5LCJleHAiOjE3NzM1ODMzNTl9.tOWErhGgaY_uNCeNgjRfmv8xmPGSmrhVJo57O-9s7cw",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[1]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/back_log/1/record",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "back_log",
+                "1",
+                "record"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Issue To Sprint API",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNDk2OTU5LCJleHAiOjE3NzM1ODMzNTl9.tOWErhGgaY_uNCeNgjRfmv8xmPGSmrhVJo57O-9s7cw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/back_log/add-to-sprint/1/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "back_log",
+                "add-to-sprint",
+                "1",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Backlog Hierarchy API",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIkNPTU1FTlRfQUREIiwiSVNTVUVfRURJVCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNTA0NDk2LCJleHAiOjE3NzM1OTA4OTZ9.HsMkzoYa0TBWG8YZJ794pt4S_nkYt88w58GbvYF3nTw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/back_log/1/hierarchy",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "back_log",
+                "1",
+                "hierarchy"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sprint Controller",
+      "item": [
+        {
+          "name": "Create Sprint",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"sprintName\": \"Sprint 1\",\r\n  \"goal\": \"Complete backlog issues\",\r\n  \"status\": \"PLANNED\",\r\n  \"startDate\": \"2026-03-20T00:00:00\",\r\n  \"endDate\": \"2026-03-30T00:00:00\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/sprints/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sprints",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Assign Issue To Sprint",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/sprints/assign/3/6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sprints",
+                "assign",
+                "3",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Start Sprint",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIkNPTU1FTlRfQUREIiwiSVNTVUVfRURJVCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNTA0NDk2LCJleHAiOjE3NzM1OTA4OTZ9.HsMkzoYa0TBWG8YZJ794pt4S_nkYt88w58GbvYF3nTw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/sprints/2/start",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sprints",
+                "2",
+                "start"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Complete Sprint",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIkNPTU1FTlRfQUREIiwiSVNTVUVfRURJVCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNTA0NDk2LCJleHAiOjE3NzM1OTA4OTZ9.HsMkzoYa0TBWG8YZJ794pt4S_nkYt88w58GbvYF3nTw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/sprints/2/complete",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sprints",
+                "2",
+                "complete"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Burndown Data",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIkNPTU1FTlRfQUREIiwiSVNTVUVfRURJVCIsIklTU1VFX1ZJRVciXSwiaWF0IjoxNzczNTA0NDk2LCJleHAiOjE3NzM1OTA4OTZ9.HsMkzoYa0TBWG8YZJ794pt4S_nkYt88w58GbvYF3nTw",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/sprints/2/burnDown",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "sprints",
+                "2",
+                "burnDown"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Issue Controller",
+      "item": [
+        {
+          "name": "Create Issue",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"issueTitle\": \"Login Bug\",\r\n  \"issueDescription\": \"Login button not working\",\r\n  \"issueType\": \"BUGS\",\r\n  \"issueStatus\": \"OPEN\",\r\n  \"issuePriority\": \"HIGH\",\r\n  \"reporterEmail\": \"manager@test.com\",\r\n  \"assignedEmail\": \"developer@test.com\",\r\n  \"sprintId\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/issues/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "issues",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Issue by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIkNPTU1FTlRfQUREIiwiSVNTVUVfVklFVyIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTA5NzMwLCJleHAiOjE3NzM1OTYxMzB9.PVxJS3TUZdFZt-WrJpntgwKXEwdYzL7ovTGaMu7HMl8",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/issues/id/6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "issues",
+                "id",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Issues by Email",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIkNPTU1FTlRfQUREIiwiSVNTVUVfVklFVyIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTA5NzMwLCJleHAiOjE3NzM1OTYxMzB9.PVxJS3TUZdFZt-WrJpntgwKXEwdYzL7ovTGaMu7HMl8",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/issues/email/developer@test.com",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "issues",
+                "email",
+                "developer@test.com"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Comment to Issue",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/issues/6/commit?author=developer@test.com&body=Investigating login issue",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "issues",
+                "6",
+                "commit"
+              ],
+              "query": [
+                {
+                  "key": "author",
+                  "value": "developer@test.com"
+                },
+                {
+                  "key": "body",
+                  "value": "Investigating login issue"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Issues by Sprint",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/issues/sprint/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "issues",
+                "sprint",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Issue Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/issues/10/status?status=DONE&performedBy=juveria",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "issues",
+                "10",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "DONE"
+                },
+                {
+                  "key": "performedBy",
+                  "value": "juveria"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Issues",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/issues/search?issueTitle=Login Bug",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "issues",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "issueTitle",
+                  "value": "Login Bug"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Attachment Controller",
+      "item": [
+        {
+          "name": "Upload Attachment API",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Email",
+                "value": "developer@test.com",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "uuid": "9e1dbddc-04b4-420d-8e74-8fe9d8bf84a2",
+                  "src": "postman-cloud:///1f1202ea-db91-4b50-be2d-35cb950df1cb"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/attachment/6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "attachment",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Download Attachment API",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/attachment/1/download",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "attachment",
+                "1",
+                "download"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Work Flow Controller",
+      "item": [
+        {
+          "name": "Create WorkFlow",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Bug Workflow\",\r\n  \"description\": \"Workflow for bugs\",\r\n  \"transactions\": [\r\n    {\r\n      \"fromStatus\": \"OPEN\",\r\n      \"toStatus\": \"IN_PROGRESS\",\r\n      \"action\": \"Start Work\"\r\n    },\r\n    {\r\n      \"fromStatus\": \"IN_PROGRESS\",\r\n      \"toStatus\": \"DONE\",\r\n      \"action\": \"Complete\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/workFlows/createWorkFlow",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "workFlows",
+                "createWorkFlow"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get WorkFlow By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/workFlows/id/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "workFlows",
+                "id",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get WorkFlow By Name",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/workFlows/name/Bug Workflow",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "workFlows",
+                "name",
+                "Bug Workflow"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All WorkFlows",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/workFlows/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "workFlows",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update WorkFlow",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Bug Workflow Updated\",\r\n  \"description\": \"Updated workflow for bugs\",\r\n  \"transactions\": [\r\n    {\r\n      \"fromStatus\": \"OPEN\",\r\n      \"toStatus\": \"IN_PROGRESS\",\r\n      \"name\": \"Start Work\",\r\n      \"allowedRole\": \"DEVELOPER\"\r\n    },\r\n    {\r\n      \"fromStatus\": \"IN_PROGRESS\",\r\n      \"toStatus\": \"DONE\",\r\n      \"name\": \"Finish Bug\",\r\n      \"allowedRole\": \"TESTER\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/workFlows/updateWorkflow/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "workFlows",
+                "updateWorkflow",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete WorkFlow",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX0VESVQiLCJJU1NVRV9WSUVXIiwiQ09NTUVOVF9BREQiXSwiaWF0IjoxNzczNTE0MjQ2LCJleHAiOjE3NzM2MDA2NDZ9.U5EuD_UtadZYtP3I6eWjDq6fYwFo5E2ZTbRqrMV809I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/workFlows/delete/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "workFlows",
+                "delete",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Integration Controller",
+      "item": [
+        {
+          "name": "Commit Integration API",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTU5ODI2LCJleHAiOjE3NzM2NDYyMjZ9.FTSbI_udfyYi9MADBpuPPbW_BdxAt9LAlGEbrxUqD7M",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/integrations/commit?message=TASK-7 fixed login bug&author=juveria",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "integrations",
+                "commit"
+              ],
+              "query": [
+                {
+                  "key": "message",
+                  "value": "TASK-7 fixed login bug",
+                  "type": "text"
+                },
+                {
+                  "key": "author",
+                  "value": "juveria",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pull Request Integration API",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTU5ODI2LCJleHAiOjE3NzM2NDYyMjZ9.FTSbI_udfyYi9MADBpuPPbW_BdxAt9LAlGEbrxUqD7M",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/integrations/pullRequest?title=TASK-7 add login validation&author=juveria",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "integrations",
+                "pullRequest"
+              ],
+              "query": [
+                {
+                  "key": "title",
+                  "value": "TASK-7 add login validation"
+                },
+                {
+                  "key": "author",
+                  "value": "juveria",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reporting Controller",
+      "item": [
+        {
+          "name": "Test Burndown Chart API",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTU5ODI2LCJleHAiOjE3NzM2NDYyMjZ9.FTSbI_udfyYi9MADBpuPPbW_BdxAt9LAlGEbrxUqD7M",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/reports/burndown/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reports",
+                "burndown",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Sprint Report API",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTU5ODI2LCJleHAiOjE3NzM2NDYyMjZ9.FTSbI_udfyYi9MADBpuPPbW_BdxAt9LAlGEbrxUqD7M",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/reports/sprintReport/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reports",
+                "sprintReport",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Workload Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTU5ODI2LCJleHAiOjE3NzM2NDYyMjZ9.FTSbI_udfyYi9MADBpuPPbW_BdxAt9LAlGEbrxUqD7M",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/reports/workload/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reports",
+                "workload",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Cumulative Flow",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTU5ODI2LCJleHAiOjE3NzM2NDYyMjZ9.FTSbI_udfyYi9MADBpuPPbW_BdxAt9LAlGEbrxUqD7M",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/reports/cumulative-flow/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reports",
+                "cumulative-flow",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Epic Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTU5ODI2LCJleHAiOjE3NzM2NDYyMjZ9.FTSbI_udfyYi9MADBpuPPbW_BdxAt9LAlGEbrxUqD7M",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/reports/epicReport/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reports",
+                "epicReport",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Test Velocity Report",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer  eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdXZlcmlhQGdtYWlsLmNvbSIsInJvbGUiOiJERVZFTE9QRVIiLCJwZXJtaXNzaW9uIjpbIklTU1VFX1ZJRVciLCJDT01NRU5UX0FERCIsIklTU1VFX0VESVQiXSwiaWF0IjoxNzczNTU5ODI2LCJleHAiOjE3NzM2NDYyMjZ9.FTSbI_udfyYi9MADBpuPPbW_BdxAt9LAlGEbrxUqD7M",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/reports/velocity/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "reports",
+                "velocity",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
