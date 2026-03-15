@@ -28,7 +28,6 @@
  <dependencyManagement>
   <dependencies>
 
-   <!-- Ensures compatibility between Spring Boot and Spring Cloud -->
    <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-dependencies</artifactId>
@@ -42,7 +41,7 @@
 
  <dependencies>
 
-  <!-- Spring Web for REST APIs -->
+  <!-- Spring Web -->
   <dependency>
    <groupId>org.springframework.boot</groupId>
    <artifactId>spring-boot-starter-web</artifactId>
@@ -66,7 +65,7 @@
    <artifactId>spring-boot-starter-validation</artifactId>
   </dependency>
 
-  <!-- DevTools for auto restart -->
+  <!-- DevTools -->
   <dependency>
    <groupId>org.springframework.boot</groupId>
    <artifactId>spring-boot-devtools</artifactId>
@@ -115,24 +114,38 @@
    <artifactId>spring-boot-starter-mail</artifactId>
   </dependency>
 
-  <!-- Cloudinary for image uploads -->
+  <!-- Cloudinary -->
   <dependency>
    <groupId>com.cloudinary</groupId>
    <artifactId>cloudinary-http44</artifactId>
    <version>1.38.0</version>
   </dependency>
 
-  <!-- PDF Processing -->
+  <!-- PDF -->
   <dependency>
    <groupId>com.itextpdf</groupId>
    <artifactId>itextpdf</artifactId>
    <version>5.5.13.3</version>
   </dependency>
 
-  <!-- OpenFeign for service communication -->
+  <!-- OpenFeign -->
   <dependency>
    <groupId>org.springframework.cloud</groupId>
    <artifactId>spring-cloud-starter-openfeign</artifactId>
+  </dependency>
+
+  <!-- Swagger / OpenAPI -->
+  <dependency>
+   <groupId>org.springdoc</groupId>
+   <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+   <version>2.5.0</version>
+  </dependency>
+
+  <!-- Load .env Variables -->
+  <dependency>
+   <groupId>me.paulschwarz</groupId>
+   <artifactId>spring-dotenv</artifactId>
+   <version>4.0.0</version>
   </dependency>
 
   <!-- Testing -->
@@ -141,19 +154,6 @@
    <artifactId>spring-boot-starter-test</artifactId>
    <scope>test</scope>
   </dependency>
-
-<dependency>
-   <groupId>org.springdoc</groupId>
-   <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-   <version>2.5.0</version>
-</dependency>
-
-    <!-- Swagger / OpenAPI -->
-    <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        <version>2.5.0</version>
-    </dependency>
 
  </dependencies>
 
