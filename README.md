@@ -4,6 +4,9 @@ A **Spring Boot based Task Management REST API** inspired by Jira.
 This backend system supports managing boards, sprints, issues, workflows, attachments, and reporting with **JWT authentication**.
 
 ---
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Java](https://img.shields.io/badge/Java-21-orange)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-3.3-green)
 
 ## Features
 
